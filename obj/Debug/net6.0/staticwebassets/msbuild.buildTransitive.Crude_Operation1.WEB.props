@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Crude_Operation1.WEB.props" />
+</Project>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Crude_Operation1.WEB.props" />
+</Project>
