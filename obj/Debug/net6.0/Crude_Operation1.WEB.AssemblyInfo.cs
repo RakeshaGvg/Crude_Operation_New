@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Crude_Operation1.WEB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d95265ad469012cf19f4e5aca5af41c01c26aea")]
 [assembly: System.Reflection.AssemblyProductAttribute("Crude_Operation1.WEB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Crude_Operation1.WEB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

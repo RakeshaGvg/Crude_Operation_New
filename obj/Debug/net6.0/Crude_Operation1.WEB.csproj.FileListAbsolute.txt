@@ -9,6 +9,9 @@ D:\Crude_Operation1.WEB\bin\Debug\net6.0\Crude_Operation1.WEB.dll
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\Crude_Operation1.WEB.pdb
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\Azure.Core.dll
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\Azure.Identity.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\FluentValidation.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\Humanizer.dll
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\MessagePack.dll
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\MessagePack.Annotations.dll
@@ -239,9 +242,11 @@ D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.GeneratedMSBuildEd
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.AssemblyInfoInputs.cache
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.AssemblyInfo.cs
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.csproj.CoreCompileInputs.cache
+D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.MvcApplicationPartsAssemblyInfo.cs
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.MvcApplicationPartsAssemblyInfo.cache
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.RazorAssemblyInfo.cache
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.RazorAssemblyInfo.cs
+D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.sourcelink.json
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\staticwebassets.build.json
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\staticwebassets.development.json
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\staticwebassets\msbuild.Crude_Operation1.WEB.Microsoft.AspNetCore.StaticWebAssets.props
@@ -258,3 +263,5 @@ D:\Crude_Operation1.WEB\obj\Debug\net6.0\refint\Crude_Operation1.WEB.dll
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.pdb
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.genruntimeconfig.cache
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\ref\Crude_Operation1.WEB.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\Mapster.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\Mapster.Core.dll

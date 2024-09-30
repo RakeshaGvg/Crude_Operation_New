@@ -9,5 +9,6 @@ namespace Crude_Operation1.WEB.Interface
         EmployeeViewModel GetEmployeeById(int id);
         void UpdateEmployee(EmployeeViewModel employeeViewModel);
         void DeleteEmployee(int id);
+        EmployeeViewModel DeletedIdDetails(int id);
     }
 }

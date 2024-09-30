@@ -2,6 +2,10 @@ using Crude_Operation1.WEB.Interface;
 using Crude_Operation1.WEB.Manager;
 using Crude_Operation1.WEB.DataModels; // Ensure this is included
 using Microsoft.EntityFrameworkCore;
+using FluentValidation.AspNetCore;
+using Crude_Operation1.WEB.Validators;
+using Crude_Operation1.WEB.ViewModel;
+using Mapster;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +16,10 @@ builder.Services.AddDbContext<DataContext>(options =>
 // Register the EmployeeManager
 builder.Services.AddScoped<IEmployeeManager, EmployeeManager>();
 
-builder.Services.AddControllersWithViews();
+TypeAdapterConfig<EmployeeViewModel, Employee>.NewConfig()
+    .Map(dest => dest.EmployeeId, src => 0);
+builder.Services.AddControllersWithViews()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<EmployeeViewModelValidator>());
 
 var app = builder.Build();
 

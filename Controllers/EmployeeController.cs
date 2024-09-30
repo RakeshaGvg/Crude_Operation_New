@@ -1,6 +1,7 @@
 ﻿using Crude_Operation1.WEB.Interface;
 using Crude_Operation1.WEB.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crude_Operation1.WEB.Controllers
 {
@@ -51,7 +52,22 @@ namespace Crude_Operation1.WEB.Controllers
             }
             return View(employeeViewModel);
         }
-        [HttpPost]
+        [HttpGet]
+        public IActionResult Delete1(int id)
+        {
+
+            var employee = _employeeManager.DeletedIdDetails(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            return View(employee);
+           
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        
         public IActionResult Delete(int id)
         {
             _employeeManager.DeleteEmployee(id);
