@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using Crude_Operation1.WEB.Validators;
 using Crude_Operation1.WEB.ViewModel;
 using Mapster;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ TypeAdapterConfig<EmployeeViewModel, Employee>.NewConfig()
     .Map(dest => dest.EmployeeId, src => 0);
 builder.Services.AddControllersWithViews()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<EmployeeViewModelValidator>());
+
+builder.Services.AddMediatR(typeof(Program).Assembly);
 
 var app = builder.Build();
 

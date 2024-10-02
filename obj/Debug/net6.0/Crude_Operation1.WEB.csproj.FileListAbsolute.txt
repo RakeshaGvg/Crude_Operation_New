@@ -265,3 +265,6 @@ D:\Crude_Operation1.WEB\obj\Debug\net6.0\Crude_Operation1.WEB.genruntimeconfig.c
 D:\Crude_Operation1.WEB\obj\Debug\net6.0\ref\Crude_Operation1.WEB.dll
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\Mapster.dll
 D:\Crude_Operation1.WEB\bin\Debug\net6.0\Mapster.Core.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\MediatR.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\MediatR.Contracts.dll
+D:\Crude_Operation1.WEB\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

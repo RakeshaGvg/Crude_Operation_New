@@ -12,9 +12,14 @@ namespace Crude_Operation1.WEB.Controllers
         {
             _employeeManager = employeeManager;
         }
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    var employees = _employeeManager.GetAllEmployees();
+        //    return View(employees);
+        //}
+        public async Task<IActionResult> Index()
         {
-            var employees = _employeeManager.GetAllEmployees();
+            var employees = await _employeeManager.GetAllEmployees(); 
             return View(employees);
         }
         public IActionResult Create()
@@ -22,55 +27,100 @@ namespace Crude_Operation1.WEB.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public IActionResult Create(EmployeeViewModel employeeViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _employeeManager.AddEmployee(employeeViewModel);
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(employeeViewModel);
+        //}
         [HttpPost]
-        public IActionResult Create(EmployeeViewModel employeeViewModel)
+        public async Task<IActionResult> Create(EmployeeViewModel employeeViewModel)
         {
             if (ModelState.IsValid)
             {
-                _employeeManager.AddEmployee(employeeViewModel);
+                await _employeeManager.AddEmployee(employeeViewModel); 
                 return RedirectToAction("Index");
             }
             return View(employeeViewModel);
         }
+        //[HttpGet]
+        //public IActionResult Edit(int id)
+        //{
+        //    var employee = _employeeManager.GetEmployeeById(id);
+        //    if (employee == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(employee);
+        //}
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var employee = _employeeManager.GetEmployeeById(id);
+            var employee = await _employeeManager.GetEmployeeById(id); 
             if (employee == null)
             {
                 return NotFound();
             }
             return View(employee);
         }
+        //[HttpPost]
+        //public IActionResult Edit(EmployeeViewModel employeeViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _employeeManager.UpdateEmployee(employeeViewModel);
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(employeeViewModel);
+        //}
         [HttpPost]
-        public IActionResult Edit(EmployeeViewModel employeeViewModel)
+        public async Task<IActionResult> Edit(EmployeeViewModel employeeViewModel)
         {
             if (ModelState.IsValid)
             {
-                _employeeManager.UpdateEmployee(employeeViewModel);
+                await _employeeManager.UpdateEmployee(employeeViewModel); 
                 return RedirectToAction("Index");
             }
             return View(employeeViewModel);
         }
-        [HttpGet]
-        public IActionResult Delete1(int id)
-        {
+        //[HttpGet]
+        //public IActionResult Delete1(int id)
+        //{
 
-            var employee = _employeeManager.DeletedIdDetails(id);
+        //    var employee = _employeeManager.DeletedIdDetails(id);
+        //    if (employee == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(employee);
+
+        //}
+        [HttpGet]
+        public async Task<IActionResult> Delete1(int id)
+        {
+            var employee = await _employeeManager.DeletedIdDetails(id); 
             if (employee == null)
             {
                 return NotFound();
             }
             return View(employee);
-           
         }
 
+        //[HttpPost, ActionName("Delete")]
 
+        //public IActionResult Delete(int id)
+        //{
+        //    _employeeManager.DeleteEmployee(id);
+        //    return RedirectToAction("Index");
+        //}
         [HttpPost, ActionName("Delete")]
-        
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _employeeManager.DeleteEmployee(id);
+            await _employeeManager.DeleteEmployee(id); // Await the async method
             return RedirectToAction("Index");
         }
     }
