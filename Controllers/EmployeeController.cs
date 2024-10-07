@@ -12,116 +12,86 @@ namespace Crude_Operation1.WEB.Controllers
         {
             _employeeManager = employeeManager;
         }
-        //public IActionResult Index()
-        //{
-        //    var employees = _employeeManager.GetAllEmployees();
-        //    return View(employees);
-        //}
+        
         public async Task<IActionResult> Index()
         {
-            var employees = await _employeeManager.GetAllEmployees(); 
-            return View(employees);
+            var result = await _employeeManager.GetAllEmployees();
+            if (result.Success)
+            {
+                return View(result.Data); 
+            }
+            return View("Error", result.ErrorMessage); 
         }
+
         public IActionResult Create()
         {
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Create(EmployeeViewModel employeeViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _employeeManager.AddEmployee(employeeViewModel);
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(employeeViewModel);
-        //}
+        
         [HttpPost]
         public async Task<IActionResult> Create(EmployeeViewModel employeeViewModel)
         {
             if (ModelState.IsValid)
             {
-                await _employeeManager.AddEmployee(employeeViewModel); 
-                return RedirectToAction("Index");
+                var result = await _employeeManager.AddEmployee(employeeViewModel);
+                if (result.Success)
+                {
+                    return RedirectToAction("Index"); 
+                }
+                ModelState.AddModelError("", result.ErrorMessage); 
             }
-            return View(employeeViewModel);
+            return View(employeeViewModel); 
         }
-        //[HttpGet]
-        //public IActionResult Edit(int id)
-        //{
-        //    var employee = _employeeManager.GetEmployeeById(id);
-        //    if (employee == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(employee);
-        //}
+        
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var employee = await _employeeManager.GetEmployeeById(id); 
-            if (employee == null)
+            var result = await _employeeManager.GetEmployeeById(id);
+            if (result.Success)
             {
-                return NotFound();
+                return View(result.Data); 
             }
-            return View(employee);
+            return NotFound(result.ErrorMessage); 
         }
-        //[HttpPost]
-        //public IActionResult Edit(EmployeeViewModel employeeViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _employeeManager.UpdateEmployee(employeeViewModel);
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(employeeViewModel);
-        //}
+
+        
         [HttpPost]
         public async Task<IActionResult> Edit(EmployeeViewModel employeeViewModel)
         {
             if (ModelState.IsValid)
             {
-                await _employeeManager.UpdateEmployee(employeeViewModel); 
-                return RedirectToAction("Index");
+                var result = await _employeeManager.UpdateEmployee(employeeViewModel);
+                if (result.Success)
+                {
+                    return RedirectToAction("Index"); 
+                }
+                ModelState.AddModelError("", result.ErrorMessage); 
             }
-            return View(employeeViewModel);
+            return View(employeeViewModel); 
         }
-        //[HttpGet]
-        //public IActionResult Delete1(int id)
-        //{
-
-        //    var employee = _employeeManager.DeletedIdDetails(id);
-        //    if (employee == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(employee);
-
-        //}
+        
         [HttpGet]
         public async Task<IActionResult> Delete1(int id)
         {
-            var employee = await _employeeManager.DeletedIdDetails(id); 
-            if (employee == null)
+            var result = await _employeeManager.DeletedIdDetails(id);
+            if (result.Success)
             {
-                return NotFound();
+                return View(result.Data); 
             }
-            return View(employee);
+            return NotFound(result.ErrorMessage); 
         }
 
-        //[HttpPost, ActionName("Delete")]
-
-        //public IActionResult Delete(int id)
-        //{
-        //    _employeeManager.DeleteEmployee(id);
-        //    return RedirectToAction("Index");
-        //}
+       
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _employeeManager.DeleteEmployee(id); // Await the async method
-            return RedirectToAction("Index");
+            var result = await _employeeManager.DeleteEmployee(id);
+            if (result.Success)
+            {
+                return RedirectToAction("Index"); 
+            }
+            return NotFound(result.ErrorMessage); 
         }
     }
 }

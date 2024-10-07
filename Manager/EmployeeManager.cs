@@ -2,6 +2,7 @@
 using Crude_Operation1.WEB.DataModels;
 using Crude_Operation1.WEB.Interface;
 using Crude_Operation1.WEB.Models;
+using Crude_Operation1.WEB.Results;
 using Crude_Operation1.WEB.ViewModel;
 using Mapster;
 using MediatR;
@@ -11,140 +12,89 @@ namespace Crude_Operation1.WEB.Manager
 {
     public class EmployeeManager: IEmployeeManager
     {
-       // private readonly DataContext _context;
+      
         private readonly IMediator _mediator;
-        //public EmployeeManager(DataContext context)
-        //{
-        //    _context = context;
-        //}
+        
         public EmployeeManager(IMediator mediator)
         {
             _mediator = mediator;
         }
-        //public IEnumerable<EmployeeViewModel> GetAllEmployees()
-        //{
-        //    //return _context.Employees.Select(e => new EmployeeViewModel
-        //    //{
-        //    //    EmployeeId = e.EmployeeId,
-        //    //    FirstName = e.FirstName,
-        //    //    LastName = e.LastName,
-        //    //    Designation = e.Designation,
-        //    //    CreatedDate = e.CreatedDate,
-        //    //}).ToList();
-        //    return _context.Employees
-        //        .ProjectToType<EmployeeViewModel>() 
-        //        .ToList();
-        //}
-        public async Task<IEnumerable<EmployeeViewModel>> GetAllEmployees()
+        
+        public async Task<Result<IEnumerable<EmployeeViewModel>>> GetAllEmployees()
         {
             var query = new GetAllEmployeesQuery();
-            return await _mediator.Send(query);
+            var employees = await _mediator.Send(query);
+            return Result<IEnumerable<EmployeeViewModel>>.Ok(employees);
         }
 
-        //public void AddEmployee(EmployeeViewModel employeeViewModel)
-        //{
-        //    //var employee = new DataModels.Employee
-        //    //{
-
-        //    //    FirstName = employeeViewModel.FirstName,
-        //    //    LastName = employeeViewModel.LastName,
-        //    //    Designation = employeeViewModel.Designation,
-        //    //    CreatedDate = employeeViewModel.CreatedDate,    
-        //    //};
-
-        //    //_context.Employees.Add(employee);
-        //    //_context.SaveChanges();
-        //    var employee = employeeViewModel.Adapt<DataModels.Employee>(); 
-        //    _context.Employees.Add(employee);
-        //    _context.SaveChanges();
-        //}
-        public async Task AddEmployee(EmployeeViewModel employeeViewModel)
+        
+        public async Task<Result<EmployeeViewModel>> AddEmployee(EmployeeViewModel employeeViewModel)
         {
-            var command = new CreateEmployeeCommand { EmployeeViewModel = employeeViewModel };
-            await _mediator.Send(command);
-        }
-        //public EmployeeViewModel GetEmployeeById(int id)
-        //{
-        //    //var employee = _context.Employees.Find(id);
-        //    //if (employee == null) return null;
-
-        //    //EmployeeViewModel model= new EmployeeViewModel
-        //    //{
-        //    //    EmployeeId = employee.EmployeeId,
-        //    //    FirstName = employee.FirstName,
-        //    //    LastName = employee.LastName,
-        //    //    Designation = employee.Designation,
-        //    //    CreatedDate = employee.CreatedDate,
-        //    //};
-        //    //return (model);
-        //    var employee = _context.Employees.Find(id);
-        //    return employee?.Adapt<EmployeeViewModel>();
-        //}
-        public async Task<EmployeeViewModel> GetEmployeeById(int id)
-        {
-            var query = new GetEmployeeByIdQuery { Id = id };
-            return await _mediator.Send(query);
-        }
-        //public void UpdateEmployee(EmployeeViewModel employeeViewModel)
-        //{
-        //    //var employee = _context.Employees.Find(employeeViewModel.EmployeeId);
-        //    //if (employee != null)
-        //    //{
-        //    //   employee.FirstName = employeeViewModel.FirstName;
-        //    //   employee.LastName= employeeViewModel.LastName;
-        //    //    employee.Designation = employeeViewModel.Designation;
-        //    //    employee.CreatedDate = employeeViewModel.CreatedDate;
-        //    //    _context.SaveChanges();
-        //    //}
-        //    var employee = _context.Employees.Find(employeeViewModel.EmployeeId);
-        //    if (employee != null)
-        //    {
-        //        employeeViewModel.Adapt(employee); 
-        //        _context.SaveChanges();
-        //    }
-        //}
-        public async Task UpdateEmployee(EmployeeViewModel employeeViewModel)
-        {
-            var command = new UpdateEmployeeCommand { EmployeeViewModel = employeeViewModel };
-            await _mediator.Send(command);
+            try
+            {
+                var command = new CreateEmployeeCommand { EmployeeViewModel = employeeViewModel };
+                await _mediator.Send(command);
+                return Result<EmployeeViewModel>.Ok(employeeViewModel); 
+            }
+            catch (Exception ex)
+            {
+                return Result<EmployeeViewModel>.Fail(ex.Message);
+            }
         }
 
-        //public EmployeeViewModel DeletedIdDetails(int id)
-        //{
-        //    //var employee = _context.Employees.Find(id);
-        //    //if (employee == null) return null;
-
-        //    //EmployeeViewModel model = new EmployeeViewModel
-        //    //{
-        //    //    EmployeeId = employee.EmployeeId,
-        //    //    FirstName = employee.FirstName,
-        //    //    LastName = employee.LastName,
-        //    //    Designation = employee.Designation,
-        //    //    CreatedDate = employee.CreatedDate,
-        //    //};
-        //    //return (model);
-        //    var employee = _context.Employees.Find(id);
-        //    return employee?.Adapt<EmployeeViewModel>(); 
-        //}
-        public async Task<EmployeeViewModel> DeletedIdDetails(int id)
+        
+        public async Task<Result<EmployeeViewModel>> GetEmployeeById(int id)
         {
-            var query = new GetEmployeeByIdQuery { Id = id };
-            return await _mediator.Send(query);
+            try
+            {
+                var query = new GetEmployeeByIdQuery { Id = id };
+                var employee = await _mediator.Send(query);
+
+                if (employee == null)
+                {
+                    return Result<EmployeeViewModel>.Fail("Employee not found.");
+                }
+
+                return Result<EmployeeViewModel>.Ok(employee);
+            }
+            catch (Exception ex)
+            {
+                return Result<EmployeeViewModel>.Fail(ex.Message);
+            }
         }
-        //public void DeleteEmployee(int id)
-        //{
-        //    var employee = _context.Employees.Find(id);
-        //    if (employee != null)
-        //    {
-        //        _context.Employees.Remove(employee);
-        //        _context.SaveChanges();
-        //    }
-
-        //}
-        public async Task DeleteEmployee(int id)
+       
+        public async Task<Result> UpdateEmployee(EmployeeViewModel employeeViewModel)
         {
-            var command = new DeleteEmployeeCommand { Id = id };
-            await _mediator.Send(command);
+            try
+            {
+                var command = new UpdateEmployeeCommand { EmployeeViewModel = employeeViewModel };
+                await _mediator.Send(command);
+                return Result.Ok(); 
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+
+       
+        public async Task<Result<EmployeeViewModel>> DeletedIdDetails(int id)
+        {
+            return await GetEmployeeById(id);
+        }
+       
+        public async Task<Result> DeleteEmployee(int id)
+        {
+            try
+            {
+                var command = new DeleteEmployeeCommand { Id = id };
+                await _mediator.Send(command);
+                return Result.Ok();
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
         }
     }
 }

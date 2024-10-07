@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ww3Q2qaNTbNmocK/Wk7ZxACpZj+/eWaQm77ZWpQp7mw=",
+  "Hash": "XBsbRMQ87fOHwGv3SpLGeXWp4lTBHs/tdazK+7xsTMI=",
   "Source": "Crude_Operation1.WEB",
   "BasePath": "_content/Crude_Operation1.WEB",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Crude_Operation1.WEB\\wwwroot\\images\\download.png",
+      "SourceId": "Crude_Operation1.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Crude_Operation1.WEB\\wwwroot\\",
+      "BasePath": "_content/Crude_Operation1.WEB",
+      "RelativePath": "images/download.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\download.png"
     },
     {
       "Identity": "D:\\Crude_Operation1.WEB\\wwwroot\\js\\site.js",

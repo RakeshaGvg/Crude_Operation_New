@@ -1,14 +1,15 @@
-﻿using Crude_Operation1.WEB.ViewModel;
+﻿using Crude_Operation1.WEB.Results;
+using Crude_Operation1.WEB.ViewModel;
 
 namespace Crude_Operation1.WEB.Interface
 {
     public interface IEmployeeManager
     {
-        Task<IEnumerable<EmployeeViewModel>> GetAllEmployees();
-        Task AddEmployee(EmployeeViewModel employeeViewModel);
-        Task<EmployeeViewModel> GetEmployeeById(int id);
-        Task UpdateEmployee(EmployeeViewModel employeeViewModel);
-        Task DeleteEmployee(int id);
-        Task<EmployeeViewModel> DeletedIdDetails(int id);
+        Task<Result<IEnumerable<EmployeeViewModel>>> GetAllEmployees();
+        Task<Result<EmployeeViewModel>> AddEmployee(EmployeeViewModel employeeViewModel);
+        Task<Result<EmployeeViewModel>> GetEmployeeById(int id);
+        Task<Result> UpdateEmployee(EmployeeViewModel employeeViewModel);
+        Task<Result>DeleteEmployee(int id);
+        Task<Result<EmployeeViewModel>> DeletedIdDetails(int id);
     }
 }

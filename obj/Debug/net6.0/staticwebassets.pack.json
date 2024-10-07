@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Crude_Operation1.WEB\\wwwroot\\images\\download.png",
+      "PackagePath": "staticwebassets\\images\\download.png"
+    },
+    {
       "Id": "D:\\Crude_Operation1.WEB\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
